@@ -35,16 +35,15 @@ Cloud Analyst with a passion for solving complex issues, providing customer supp
   - Attended incident response meetings in the event of application outages, assisted with the resolution and documentation process yielding +25% faster response times company-wide.
   - Created and managed web servers, databases, and sandbox environments using Linux EC2 instances and virtual machines.
 
-### Enterprise Integrations Services (Support)
-- Assisted the Integration Services team with triaging Jira and ServiceNow tickets resulting in swifter resolution times and less engineering downtime.
-- Resolved hundreds of errors from failed part inventories using a CostPoint and Coupa API.
-- Applied knowledge and understanding of IAM platforms and applications such as SailPoint and Okta to resolve authentication and incorrect access issues.
+- **Enterprise Integrations Services (Support)**
+  - Assisted the Integration Services team with triaging Jira and ServiceNow tickets resulting in swifter resolution times and less engineering downtime.
+  - Resolved hundreds of errors from failed part inventories using a CostPoint and Coupa API.
+  - Applied knowledge and understanding of IAM platforms and applications such as SailPoint and Okta to resolve authentication and incorrect access issues.
 
 ### Blue Origin
 **April 2022 – October 2022**
 
 - **Data Support Analyst (Contract)**
-- 
   - Acted as the first line of defense for troubleshooting 100+ application errors for thousands of mechanical engineers across the organization ensuring improved end-user and developer experience, as well as cutting resolution times down by 50%.
   - Provided daily administrative support for multiple hosted applications (e.g., JIRA, Confluence, GitLab, ServiceNow).
   - Provisioned new users, managed workflows, managed system configurations, and provided solutions for end-users on a daily basis.
