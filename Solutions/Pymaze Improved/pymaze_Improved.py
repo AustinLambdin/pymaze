@@ -78,14 +78,13 @@ def move_player(maze, direction):
                 print("Congratulations! You found all the items!")
             else:
                 print(f"Item collected! Only {ITEMS_COLLECTED} items left.")
-
         if new_pos == find_exit(maze):  # Check if the new position is the exit
             print("Congratulations! You found the exit!")
             return True
         maze[player_pos[0]][player_pos[1]] = EMPTY
         maze[new_pos[0]][new_pos[1]] = PLAYER
         return new_pos  # Return the new position of the player
-    return player_pos  # Return the current position if the move is invalid
+    return False  # Return the current position if the move is invalid
 
 
 
@@ -115,6 +114,8 @@ def main():
         else:
             print("Invalid move! Use WASD.")
             continue
+        if not new_pos:
+            print("Cannot move there! Try another direction.")
         if new_pos is True:  # Check if the game should end
             break
 

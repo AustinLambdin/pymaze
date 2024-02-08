@@ -11,14 +11,9 @@ PLAYER = 'P'
 EXIT = 'E'
 ITEM = '*'
 
-# Add global variable to track the number of items collected
-ITEMS_COLLECTED = 0
-
 # Function to initialize the maze
 def initialize_maze():
-    global ITEMS_COLLECTED  # Access the global ITEMS_COLLECTED variable
     maze = [[EMPTY] * MAZE_WIDTH for _ in range(MAZE_HEIGHT)]
-    items_count = 0  # Initialize items_count
     # Place walls
     for i in range(MAZE_HEIGHT):
         maze[i][0] = WALL
@@ -37,9 +32,7 @@ def initialize_maze():
             y = random.randint(1, MAZE_HEIGHT - 2)
             if maze[y][x] == EMPTY:
                 maze[y][x] = ITEM
-                items_count += 1  # Increment items_count
                 break
-    ITEMS_COLLECTED = items_count  # Update the global variable
     return maze
 
 # Function to print the maze
@@ -49,26 +42,15 @@ def print_maze(maze):
 
 # Function to move the player
 def move_player(maze, direction):
-    global ITEMS_COLLECTED # Access the global variable
     player_pos = find_player(maze)
     new_pos = (player_pos[0] + direction[0], player_pos[1] + direction[1])
     if maze[new_pos[0]][new_pos[1]] != WALL:
-        if maze[new_pos[0]][new_pos[1]] == ITEM:
-            ITEMS_COLLECTED -= 1  # Decrement the number of items collected
-            if ITEMS_COLLECTED == 0:
-                print("Congratulations! You found all the items!")
-            else:
-                print(f"Item collected! Only {ITEMS_COLLECTED} items left.")
         maze[player_pos[0]][player_pos[1]] = EMPTY
         maze[new_pos[0]][new_pos[1]] = PLAYER
         print("New position:", new_pos)  # Debug print statement
-        if new_pos == (MAZE_HEIGHT - 2, MAZE_WIDTH - 2):  # Check if the new position is the exit
-            print("Congratulations! You found the exit!")
-            return True
-        return new_pos  # Return the new position of the player
-    return False  # Return the current position if the move is invalid
-
-
+        print("Cell value at new position:", maze[new_pos[0]][new_pos[1]])  # Debug print statement
+        return True
+    return False
 
 # Function to find the player's position
 def find_player(maze):
@@ -86,20 +68,23 @@ def main():
         print_maze(maze)
         direction = input("Enter your move (WASD): ").upper()
         if direction == 'W':
-            new_pos = move_player(maze, (-1, 0))
+            moved = move_player(maze, (-1, 0))
         elif direction == 'S':
-            new_pos = move_player(maze, (1, 0))
+            moved = move_player(maze, (1, 0))
         elif direction == 'A':
-            new_pos = move_player(maze, (0, -1))
+            moved = move_player(maze, (0, -1))
         elif direction == 'D':
-            new_pos = move_player(maze, (0, 1))
+            moved = move_player(maze, (0, 1))
         else:
             print("Invalid move! Use WASD.")
             continue
-        if not new_pos:
+        if not moved:
             print("Cannot move there! Try another direction.")
-        if new_pos is True:  # Check if the game should end
-            break
+        else:
+            player_pos = find_player(maze)
+            if maze[player_pos[0]][player_pos[1]] == EXIT:
+                print("Congratulations! You found the exit!")
+                break
 
 if __name__ == "__main__":
     main()

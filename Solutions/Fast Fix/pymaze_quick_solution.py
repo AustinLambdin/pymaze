@@ -48,11 +48,12 @@ def move_player(maze, direction):
         maze[player_pos[0]][player_pos[1]] = EMPTY
         maze[new_pos[0]][new_pos[1]] = PLAYER
         print("New position:", new_pos)  # Debug print statement
+        print("Cell value at new position:", maze[new_pos[0]][new_pos[1]])  # Debug print statement
         if new_pos == (MAZE_HEIGHT - 2, MAZE_WIDTH - 2):  # Check if the new position is the exit
             print("Congratulations! You found the exit!")
             return True
-        return new_pos  # Return the new position of the player
-    return player_pos  # Return the current position if the move is invalid
+        return new_pos # Return the new position of the player
+    return False  # Return the current position if the move is invalid
 
 
 
@@ -82,6 +83,8 @@ def main():
         else:
             print("Invalid move! Use WASD.")
             continue
+        if not new_pos:
+            print("Cannot move there! Try another direction.")
         if new_pos is True:  # Check if the game should end
             break
 
